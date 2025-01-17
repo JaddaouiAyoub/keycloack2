@@ -1,11 +1,11 @@
 FROM quay.io/keycloak/keycloak:26.0.6
 
-# Définitions des variables d'environnement pour l'admin
+# Variables d'environnement
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
-# Copier le fichier realm dans le répertoire d'importation de Keycloak
+# Copier le fichier realm.json dans le répertoire d'importation
 COPY realm.json /opt/keycloak/data/import/
 
-# Commande pour démarrer Keycloak en mode développement et importer le realm
+# Commande de démarrage Keycloak avec importation de realm
 ENTRYPOINT ["kc.sh", "start-dev", "--import-realm"]
